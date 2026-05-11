@@ -32,3 +32,22 @@ This project uses the **MovieLens Latest Small** dataset provided by GroupLens R
 We follow the **Bronze-Silver-Gold** data pattern:
 *   `data/raw`: Immutable original CSV files.
 *   `data/processed`: Cleaned and engineered features for model consumption.
+
+### Feature Engineering
+To compute similarities, we implement a **Metadata Soup** approach:
+1.  **Text Cleaning:** Removal of release years, special characters, and stop words.
+2.  **Normalization:** Converting genres from pipe-separated strings to space-separated tokens.
+3.  **Vectorization:** Using `CountVectorizer` to transform text into numerical feature matrices.
+
+### Recommendation Engine
+The core algorithm uses **Cosine Similarity** to calculate distances between movie feature vectors. 
+
+*   **Algorithm:** Content-Based Filtering.
+*   **Similarity Metric:** Cosine Similarity.
+*   **Optimization:** Inverted index mapping for $O(1)$ title lookups and vectorized similarity computations.
+
+## Usage
+Run the interactive command-line interface to get recommendations:
+
+```bash
+python -m src.main
