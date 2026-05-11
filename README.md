@@ -51,3 +51,16 @@ Run the interactive command-line interface to get recommendations:
 
 ```bash
 python -m src.main
+
+### Reliability & Observability
+The system is built to be production-ready with professional logging and error handling:
+*   **Persistent Logging:** Uses `RotatingFileHandler` to store logs in `logs/app.log` without exhausting disk space.
+*   **Input Sanitization:** Robust validation of user queries, handling edge cases like empty strings or non-existent titles.
+*   **Fault Tolerance:** Graceful degradation when the similarity engine encounters unexpected data.
+
+## Testing
+We use **Pytest** for automated testing to ensure the reliability of the recommendation engine.
+
+### Running Tests
+```bash
+pytest
