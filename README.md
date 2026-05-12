@@ -1,77 +1,42 @@
-# Professional Movie Recommender System
+# 🎬 Professional Movie Recommender System
 
-## Project Overview
+[![Python Version](https://img.shields.io/badge/python-3.14+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Code Style: Black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-An end-to-end recommendation engine built with Python, focusing on software engineering best practices, clean architecture, and scalable Machine Learning patterns.
+A high-performance movie recommendation engine built with Python, focusing on software engineering excellence, modular architecture, and content-based filtering.
 
-## Tech Stack
+## 🏗 Architecture & Design
 
-- **Language:** Python 3.14+
-- **ML Libraries:** Scikit-Learn, Pandas, Numpy
-- **Tools:** Pytest, Pydantic, Logging, Git
+The project implements a **Clean Architecture** pattern, separating data concerns, business logic, and user interface.
 
-## Setup Instructions
+### Key Modules:
 
-### 1. Environment Setup
+- **DataLoader**: Handles immutable data ingestion and validation.
+- **TextPreprocessor**: Executes NLP pipelines (metadata soup, cleaning, vectorization).
+- **MovieRecommender**: Core engine utilizing Cosine Similarity for high-dimensional vector space mapping.
+- **CLI Interface**: Interactive terminal experience powered by `Rich`.
 
-````bash
-# Clone the repository
-git clone <your-repo-url>
-cd movie-recommender-system
+## 🧠 Technical Deep Dive
 
-# Create and activate virtual environment
-python -m venv .venv
-source .venv/bin/activate  # Or .venv\Scripts\activate on Windows
+The system uses **Content-Based Filtering**. It builds a profile for each movie by combining genres and titles into a "metadata soup," which is then transformed into a sparse matrix using `CountVectorizer`.
 
-# Install dependencies
-pip install -r requirements.txt
+**Similarity Metric:**
+$$similarity(A, B) = \frac{A \cdot B}{\|A\| \|B\|}$$
 
-## Dataset
-This project uses the **MovieLens Latest Small** dataset provided by GroupLens Research.
-- **Size:** ~100,000 ratings and 3,600 tag applications applied to 9,742 movies.
-- **Source:** [MovieLens Website](https://grouplens.org/datasets/movielens/)
+We chose Cosine Similarity over Euclidean distance because it measures the orientation (similarity of features) regardless of the magnitude, which is ideal for text-based feature vectors.
 
-### Data Organization
-We follow the **Bronze-Silver-Gold** data pattern:
-*   `data/raw`: Immutable original CSV files.
-*   `data/processed`: Cleaned and engineered features for model consumption.
+## 🚀 Getting Started
 
-### Feature Engineering
-To compute similarities, we implement a **Metadata Soup** approach:
-1.  **Text Cleaning:** Removal of release years, special characters, and stop words.
-2.  **Normalization:** Converting genres from pipe-separated strings to space-separated tokens.
-3.  **Vectorization:** Using `CountVectorizer` to transform text into numerical feature matrices.
+### Prerequisites
 
-### Recommendation Engine
-The core algorithm uses **Cosine Similarity** to calculate distances between movie feature vectors.
+- Python 3.14+
+- Virtual environment (recommended)
 
-*   **Algorithm:** Content-Based Filtering.
-*   **Similarity Metric:** Cosine Similarity.
-*   **Optimization:** Inverted index mapping for $O(1)$ title lookups and vectorized similarity computations.
+### Installation
 
-## Usage
-Run the interactive command-line interface to get recommendations:
-
-```bash
-python -m src.main
-
-### Reliability & Observability
-The system is built to be production-ready with professional logging and error handling:
-*   **Persistent Logging:** Uses `RotatingFileHandler` to store logs in `logs/app.log` without exhausting disk space.
-*   **Input Sanitization:** Robust validation of user queries, handling edge cases like empty strings or non-existent titles.
-*   **Fault Tolerance:** Graceful degradation when the similarity engine encounters unexpected data.
-
-## Testing
-We use **Pytest** for automated testing to ensure the reliability of the recommendation engine.
-
-### Running Tests
-```bash
-pytest
-
-### Code Quality & Standards
-The codebase adheres to high-level professional standards:
-*   **Static Typing:** Extensive use of Type Hints for robust development.
-*   **Documentation:** All modules follow the Google Python Style Guide for docstrings.
-*   **Formatting:** Strict adherence to `Black` and `isort` (PEP 8 compliant).
-*   **Linting:** Type checking validated via `Mypy`.
-````
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/youruser/movie-recommender-system.git](https://github.com/youruser/movie-recommender-system.git)
+   cd movie-recommender-system
+   ```
