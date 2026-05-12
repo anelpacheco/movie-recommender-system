@@ -1,17 +1,20 @@
 # Professional Movie Recommender System
 
 ## Project Overview
+
 An end-to-end recommendation engine built with Python, focusing on software engineering best practices, clean architecture, and scalable Machine Learning patterns.
 
 ## Tech Stack
-* **Language:** Python 3.14+
-* **ML Libraries:** Scikit-Learn, Pandas, Numpy
-* **Tools:** Pytest, Pydantic, Logging, Git
+
+- **Language:** Python 3.14+
+- **ML Libraries:** Scikit-Learn, Pandas, Numpy
+- **Tools:** Pytest, Pydantic, Logging, Git
 
 ## Setup Instructions
 
 ### 1. Environment Setup
-```bash
+
+````bash
 # Clone the repository
 git clone <your-repo-url>
 cd movie-recommender-system
@@ -40,7 +43,7 @@ To compute similarities, we implement a **Metadata Soup** approach:
 3.  **Vectorization:** Using `CountVectorizer` to transform text into numerical feature matrices.
 
 ### Recommendation Engine
-The core algorithm uses **Cosine Similarity** to calculate distances between movie feature vectors. 
+The core algorithm uses **Cosine Similarity** to calculate distances between movie feature vectors.
 
 *   **Algorithm:** Content-Based Filtering.
 *   **Similarity Metric:** Cosine Similarity.
@@ -64,3 +67,11 @@ We use **Pytest** for automated testing to ensure the reliability of the recomme
 ### Running Tests
 ```bash
 pytest
+
+### Code Quality & Standards
+The codebase adheres to high-level professional standards:
+*   **Static Typing:** Extensive use of Type Hints for robust development.
+*   **Documentation:** All modules follow the Google Python Style Guide for docstrings.
+*   **Formatting:** Strict adherence to `Black` and `isort` (PEP 8 compliant).
+*   **Linting:** Type checking validated via `Mypy`.
+````
